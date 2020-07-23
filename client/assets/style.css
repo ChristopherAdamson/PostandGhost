@@ -1,0 +1,136 @@
+:root{
+  --mint: #E5ECE9;
+  --white: #ffffff;
+  --black: black;
+  --darkpurple: #321325;
+  --purple: #5F0F40;
+  --lightpurple: #a676ff;
+  --lightgrey: #dadada;
+  --grey: #868686;
+  --darkgrey: #3d3d3d;
+  --bronze: #CB793A;
+}
+body{
+  background-color: var(--white);
+  color: var(--black);
+}
+
+header{
+  background-color: var(--darkpurple);
+  color: var(--white);
+}
+
+.font-darkpurple{
+color: var(--darkpurple);
+}
+
+.font-bronze{
+color: var(--bronze);
+}
+
+.font-white{
+color: var(--white);
+}
+
+.font-mint{
+  color: var(--mint);
+  }
+
+  .font-purple{
+    color: var(--purple);
+    }
+
+.font-simple-serif{
+font-family: 'Amiri', serif;
+}
+.font-fancy-serif{
+font-family: 'Averia Serif Libre', cursive;
+}
+.font-whispy-thick{
+font-family: 'Berkshire Swash', cursive;
+}
+.font-sharp-handwriting{
+font-family: 'Bilbo', cursive;
+}
+.font-western-caps{
+font-family: 'Girassol', cursive;
+}
+.font-medieval-simple{
+font-family: 'Grenze Gotisch', cursive;
+}
+.font-inky-typed{
+font-family: 'IM Fell DW Pica', serif;
+}
+.font-inky-caps{
+font-family: 'IM Fell DW Pica SC', serif;
+}
+.font-medieval-wide{
+font-family: 'Metamorphous', cursive;
+}
+.font-round-blocky-sans{
+font-family: 'Mirza', cursive;
+}
+.font-keycaps{
+font-family: 'Monofett', cursive;
+}
+.font-underline-caps{
+font-family: 'Montserrat Subrayada', sans-serif;
+}
+.font-simple-serif-2{
+font-family: 'Neuton', serif;
+}
+.font-cut-edge{
+font-family: 'Nova Cut', cursive;
+}
+.font-straight-thick-sans{
+font-family: 'Oswald', sans-serif;
+}
+.font-whispy-sans{
+font-family: 'Philosopher', sans-serif;
+}
+.font-medieval-thick{
+font-family: 'Pirata One', cursive;
+}
+.font-easy-handwriting{
+font-family: 'Reenie Beanie', cursive;
+}
+.font-inky-typewriter{
+font-family: 'Special Elite', cursive;
+}
+.font-wide-rounded{
+font-family: 'Sulphur Point', sans-serif;
+}
+.font-windy-caps{
+font-family: 'Trade Winds', cursive;
+}
+.font-retro{
+font-family: 'VT323', monospace;
+}
+.font-marker-edge{
+font-family: 'Yatra One', cursive;
+}
+
+
+.rm-my{
+    margin-top: 0em !important;
+    margin-bottom: 0em !important;
+  }
+  
+  .rm-mx{
+    margin-left: 0em;
+    margin-right: 0em;
+  }
+  
+  .rm-py{
+    padding-top: 0em;
+    padding-bottom: 0em;
+  }
+  
+  .rm-px{
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  .hidden{
+    display: none !important;
+  }
