@@ -12,7 +12,8 @@ export class PostsController extends BaseController {
       .post("/:id/comment", this.addComment)
       .put("/:id", this.edit)
       .delete("/:id", this.delete)
-      .delete("/:id/comment/:commentId", this.deleteComment);
+      .delete("/:id/comment/:commentId", this.deleteComment)
+      .get("/:page", this.findByPage)
   }
 
   async delete(req, res, next) {
@@ -24,6 +25,7 @@ export class PostsController extends BaseController {
     }
   }
 
+
   async edit(req, res, next) {
     try {
       let rawPostData = req.body
@@ -31,6 +33,16 @@ export class PostsController extends BaseController {
       res.send({ data: post, message: endpoint + " edited!" })
     } catch (err) {
       next(err)
+    }
+  }
+
+  async findByPage(req, res, next) {
+    try {
+      let pageNo = req.params.page
+      let pageData = await postsService.findByPage(pageNo)
+      res.send({ data: pageData, message: "next 10" + endpoint + "s" })
+    } catch (error) {
+      next(error)
     }
   }
 
