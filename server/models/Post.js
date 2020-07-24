@@ -14,7 +14,7 @@ const Post = new Schema(
     content: { type: String },
     voteCount: { type: Number, required: true },
     user: { type: String, required: true },
-    comment: [commentContent]
+    comments: [commentContent]
   },
   { timestamps: true, toJSON: { virtuals: true } }
 );
