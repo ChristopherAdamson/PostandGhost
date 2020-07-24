@@ -1,18 +1,18 @@
-import store from "../store"
+import store from "../store.js"
 
-let id = 1;
 export default class Post {
-    constructor(data) {
-        this.topic = data.topic
-        this.imgUrl = data.imgUrl
-        this.comments = data.comments || []
-        this.voteCount = data.voteCount || 0
-        this.id = data.id || id++
-        this.user = data.user || "No User"
-    }
+  constructor(data) {
+    this.topic = data.topic
+    this.imgUrl = data.imgUrl
+    this.content = data.content
+    this.comments = data.comments || []
+    this.voteCount = data.voteCount || 0
+    this.id = data.id || data._id
+    this.user = data.user || "No User"
+  }
 
-    get Template (){
-        let template =  `
+  get Template() {
+    let template = `
         <div class="row bg-secondary m-5">
       <div class="col-9">
         <h5 class="text-right">${this.user}</h5>
@@ -27,11 +27,11 @@ export default class Post {
       </div>
       </div>
         `
-        return template
-    }
+    return template
+  }
 
-    get modalTemplate() {
-      let template = `
+  get modalTemplate() {
+    let template = `
       <div class="row bg-secondary m-5">
       <div class="col-9">
         <h5 class="text-right">${this.user}</h5>
@@ -46,15 +46,17 @@ export default class Post {
       </div>
 
       `
-      template += `
+    template += `
       <div class= "card border-dark rounded">
       <div class="row justify-content-center">
    
       <form class="col-12" action="" onsubmit= app.postsController.makeComment(event, ${this.id})>
       <div class="form-group">
-        <label for="comment"></label>
-        <div class="col-8">
+      <label for="comment"></label>
+      <label for="user"></label>
+      <div class="col-8">
         <input type="text" name="comment" class="form-control" placeholder="Add a comment.."></div>
+        <input type="text" name="user" class="form-control" placeholder="Add a user.."></div>
         <div class="col-2">
         <button class='btn btn-success' type = "submit" >Submit</button></div>
         
@@ -63,18 +65,15 @@ export default class Post {
       </form>
     </div>
      `
-     this.comments.forEach(comment => template += `
+    this.comments.forEach(comment => template += `
      <h5>${comment}</h5>
      `)
 
-     template += `
+    template += `
+     </div>
      </div>
      `
 
-     template += `
-     </div>
-     `
-
-      return template
-    }
+    return template
+  }
 }
