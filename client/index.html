@@ -12,49 +12,56 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Averia+Serif+Libre:wght@300;700&family=Berkshire+Swash&family=Bilbo&family=Girassol&family=Grenze+Gotisch:wght@400;700&family=IM+Fell+DW+Pica+SC&family=IM+Fell+DW+Pica:ital@0;1&family=Metamorphous&family=Mirza:wght@400;700&family=Monofett&family=Montserrat+Subrayada&family=Neuton:ital,wght@0,300;0,400;0,700;1,400&family=Nova+Cut&family=Oswald:wght@300;400;600&family=Philosopher:ital,wght@0,400;0,700;1,400&family=Pirata+One&family=Reenie+Beanie&family=Special+Elite&family=Sulphur+Point&family=Trade+Winds&family=VT323&family=Yatra+One&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="../client/assets/style.css" class="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css" class="stylesheet">
 
   <title>postandghost</title>
 </head>
 
 
 <body>
-  <header class="font-inky-typewriter">
-    <h1>
-      POST & GHOST
-    </h1>
-    <h1>
-      POST & GHOST
-    </h1>
-  </header>
+  <main class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <form onsubmit="app.postsController.makePost(event)">
+          <div class="form-group">
+            <label for="user">User</label>
+            <input type="text" name="user" class="form-control" placeholder="Enter User">
+          </div>
+          <div class="form-group">
+            <label for="content">Content</label>
+            <input type="text" name="content" class="form-control" placeholder="Enter Content">
+          </div>
+          <div class="form-group">
+            <label for="imgUrl">Image Url</label>
+            <input type="text" name="imgUrl" class="form-control" placeholder="Enter ImageUrl">
+          </div>
+          <button type="submit" class="btn">Submit</button>
+        </form>
+      </div>
+    </div>
+  </main>
 
-  <section>
-    <h1 class="font-purple font-windy-caps">
-      postandghost
-      POST & GHOST
-    </h1>
-    <h1 class="font-bronze font-marker-edge">
-      postandghost
-      POST & GHOST
-    </h1>
-    <h1 class="font-mint font-whispy-sans">
-      postandghost
-      POST & GHOST
-    </h1>
-    <h1 class="font-darkpurple font-cut-edge">
-      postandghost
-      POST & GHOST
-    </h1>
-    <h1 class="font-darkgrey font-simple-serif-2">
-      postandghost
-      POST & GHOST
-    </h1>
+  <section class="container-fluid">
+    <div class="row bg-secondary m-5">
+      <div class="col-9">
+        <h5 class="text-right">user</h5>
+        <h3 class="text-center">Content</h3>
+        <img class="center-block" src="//placehold.it/200x200" alt="">
+      </div>
+      <div class="col-3">
+        <button onclick="app.votesController.postVote('up', id)">Up Arrow</button>
+        <p>0</p>
+        <button onclick="app.votesController.postVote('down', id)">Down Arrow</button>
+      </div>
+    </div>
+
   </section>
 
 
 
 
   <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -66,7 +73,7 @@
     integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
     crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script class="main.js"></script>
+  <script type="module" src="app/main.js"></script>
 </body>
 
 </html>
