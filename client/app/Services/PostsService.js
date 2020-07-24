@@ -15,8 +15,11 @@ class PostsService {
   // }
   makePost(rawPostData) {
     let newPost = new Post(rawPostData)
-    store.commit("posts", newPost)
+    // store.commit("posts", newPost)
+    store.State.posts.push(newPost)
   }
+
+
 }
 
 const service = new PostsService();
