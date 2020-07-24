@@ -12,8 +12,13 @@ function _drawAll() {
 
 
 function _drawModal(id) {
-  let found = store.State.posts.find(post => post.id == id)
-  document.getElementById("modalTemplate").innerHTML = found.Template
+  debugger
+  let template = ""
+
+  // let found = store.State.posts.comments.forEach(post => template += postComment.modalTemplate)
+  // document.getElementById("modalTemplate").innerHTML = found.modalTemplate
+
+  template += `</div></div>`
 }
 
 //Public
@@ -45,7 +50,7 @@ export default class PostsController {
 
   }
 
-  drawsComments(id) {
+  drawsModal(id) {
     _drawModal(id)
   }
 
