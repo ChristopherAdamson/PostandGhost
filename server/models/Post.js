@@ -10,8 +10,8 @@ const commentContent = new Schema(
 const Post = new Schema(
   {
     topic: { type: String, required: true },
-    imgUrl: { type: String, required: true },
-    content: { type: String, required: true },
+    imgUrl: { type: String },
+    content: { type: String },
     voteCount: { type: Number, required: true },
     user: { type: String, required: true },
     comment: [commentContent]
