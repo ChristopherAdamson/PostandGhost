@@ -9,8 +9,10 @@ export class PostsController extends BaseController {
     this.router
       .get("", this.getAll)
       .post("", this.create)
+      .post("/:id/comment", this.addComment)
+      .put("/:id", this.edit)
       .delete("/:id", this.delete)
-    // .put("/:id", this.edit);
+      .delete("/:id/comment/:commentId", this.deleteComment);
   }
 
   async delete(req, res, next) {
@@ -22,15 +24,15 @@ export class PostsController extends BaseController {
     }
   }
 
-  // async edit(req, res, next) {
-  //   try {
-  //     let rawPostData = req.body
-  //     let post = await postsService.edit(req.params.id, rawPostData)
-  //     res.send({ data: post, message: endpoint + " edited!" })
-  //   } catch (err) {
-  //     next(err)
-  //   }
-  // }
+  async edit(req, res, next) {
+    try {
+      let rawPostData = req.body
+      let post = await postsService.edit(req.params.id, rawPostData)
+      res.send({ data: post, message: endpoint + " edited!" })
+    } catch (err) {
+      next(err)
+    }
+  }
 
   async getAll(req, res, next) {
     try {
@@ -46,6 +48,32 @@ export class PostsController extends BaseController {
     try {
       let newPost = await postsService.create(req.body)
       res.send(newPost);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+
+  async addComment(req, res, next) {
+    try {
+      let comment = await postsService.addComment(req.params.id, req.body);
+      if (comment) {
+        return res.send(comment);
+      }
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async deleteComment(req, res, next) {
+    try {
+      let move = await postsService.deleteComment(
+        req.params.id,
+        req.params.personId
+      );
+      if (move) {
+        res.send("he gone");
+      }
     } catch (error) {
       next(error);
     }
