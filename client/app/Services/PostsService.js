@@ -9,16 +9,20 @@ const _api = axios.create({
 
 class PostsService {
   // makePost(rawPostData) {
-  //   _api.post("", rawPostData).then(res => {
-  //     console.log(res);
-  //   }).catch(err => console.error(err))
-  // }
-  makePost(rawPostData) {
-    let newPost = new Post(rawPostData)
-    // store.commit("posts", newPost)
-    store.State.posts.push(newPost)
-  }
-
+    //   _api.post("", rawPostData).then(res => {
+      //     console.log(res);
+      //   }).catch(err => console.error(err))
+      // }
+      makePost(rawPostData) {
+        let newPost = new Post(rawPostData)
+        // store.commit("posts", newPost)
+        store.State.posts.push(newPost)
+      }
+      
+      makeComment(commentData, found) {
+        found.comments.push(commentData)
+        console.log(found.comments)
+      }
 
 }
 
