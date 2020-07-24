@@ -10,7 +10,7 @@ export class PostsController extends BaseController {
       .get("", this.getAll)
       .post("", this.create)
       .delete("/:id", this.delete)
-      .put("/:id", this.edit);
+    // .put("/:id", this.edit);
   }
 
   async delete(req, res, next) {
@@ -22,15 +22,15 @@ export class PostsController extends BaseController {
     }
   }
 
-  async edit(req, res, next) {
-    try {
-      let rawPostData = req.body
-      let post = await postsService.edit(req.params.id, rawPostData)
-      res.send({ data: post, message: endpoint + " edited!" })
-    } catch (err) {
-      next(err)
-    }
-  }
+  // async edit(req, res, next) {
+  //   try {
+  //     let rawPostData = req.body
+  //     let post = await postsService.edit(req.params.id, rawPostData)
+  //     res.send({ data: post, message: endpoint + " edited!" })
+  //   } catch (err) {
+  //     next(err)
+  //   }
+  // }
 
   async getAll(req, res, next) {
     try {

@@ -7,7 +7,7 @@ import { RegisterControllers, Paths } from "../Setup";
 export default class Startup {
   static ConfigureGlobalMiddleware(app) {
     // NOTE Configure and Register Middleware
-    let whitelist = ["http://localhost:8080"];
+    let whitelist = [""];
     let corsOptions = {
       origin: function (origin, callback) {
         let originIsWhitelisted = whitelist.indexOf(origin) !== -1;
