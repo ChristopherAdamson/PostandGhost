@@ -1,5 +1,6 @@
 import store from "../store.js";
-import Post from "../Models/Post.js"
+import Post from "../Models/Post.js";
+import PostsController from "../Controllers/PostsController.js";
 
 // @ts-ignore
 const _api = axios.create({
@@ -17,13 +18,13 @@ class VotesService {
       foundPost.voteCount--
     }
   }
-  // makePost(rawPostData) {
-  //   _api.post("", rawPostData).then(res => {
-  //     console.log(res);
-  //   }).catch(err => console.error(err))
-  // }
+
+  commentVote(choice, id){
+ 
+}
 
 }
+
 
 const service = new VotesService();
 export default service;

@@ -41,21 +41,25 @@
     </div>
   </main>
 
-  <section class="container-fluid">
-    <div class="row bg-secondary m-5">
-      <div class="col-9">
-        <h5 class="text-right">user</h5>
-        <h3 class="text-center">Content</h3>
-        <img class="center-block" src="//placehold.it/200x200" alt="">
-      </div>
-      <div class="col-3">
-        <button onclick="app.votesController.postVote('up', id)">Up Arrow</button>
-        <p>0</p>
-        <button onclick="app.votesController.postVote('down', id)">Down Arrow</button>
-      </div>
-    </div>
+  <section id="posts" class="container-fluid">
+  
 
   </section>
+
+  <div class="modal fade" id="commentModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div id = "modalTemplate" class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 
 
 

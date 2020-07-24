@@ -3,18 +3,17 @@ import store from "../store.js";
 
 //Private
 function _draw() {
-  let posts = store.State.posts;
-  console.log(posts);
+
 }
 
 //Public
 export default class VotesController {
   constructor() {
   }
-  postVote(choice) {
-    VotesService.postVote(choice)
+  postVote(choice, id) {
+    VotesService.postVote(choice, id)
   }
-  commentVote(choice) {
-
+  commentVote(choice, id) {
+    VotesService.commentVote(choice, id)
   }
 }
