@@ -2,7 +2,7 @@ import { dbContext } from "../db/DbContext";
 import { BadRequest } from "../utils/Errors";
 
 class PostsService {
-  delete(id) {
+  async delete(id) {
     return await dbContext.Posts.findByIdAndDelete(id)
   }
 
@@ -13,6 +13,10 @@ class PostsService {
     let posts = await dbContext.Posts.find(query);
     return posts;
   }
+
+  // async edit(id, newData) {
+  //   return await dbContext.Posts.edit(id, newData, { new: true })
+  // }
   async findById(id) {
     let post = await dbContext.Posts.findById(id);
     if (!post) {
