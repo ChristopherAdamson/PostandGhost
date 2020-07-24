@@ -11,6 +11,11 @@ class PostsService {
     return posts;
   }
 
+  async findByPage(page) {
+    let foundPage = await dbContext.Posts.find().limit(10).skip(page * 10);
+    return foundPage;
+  }
+
   async edit(id, newData) {
     return await dbContext.Posts.findByIdAndUpdate(id, newData, { new: true })
   }
