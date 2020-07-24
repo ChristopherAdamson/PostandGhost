@@ -10,14 +10,20 @@ function _drawAll() {
   document.getElementById("posts").innerHTML = template;
 }
 
-
-function _drawModal(id) {
-  debugger
+function _drawNewPost() {
   let template = ""
+  let post = store.State.posts[0];
+  console.log(post);
+  template += post.Template
+  document.getElementById("newPost").innerHTML += template;
+}
 
-  // let found = store.State.posts.comments.forEach(post => template += postComment.modalTemplate)
-  // document.getElementById("modalTemplate").innerHTML = found.modalTemplate
 
+function _drawModal(postId) {
+  let template = ""
+  let postData = store.State.posts.find(p => p._id == postId)
+  console.log(postData);
+  document.getElementById("modalTemplate").innerHTML = postData.modalTemplate
   template += `</div></div>`
 }
 
@@ -25,6 +31,7 @@ function _drawModal(id) {
 export default class PostsController {
   constructor() {
     store.subscribe("posts", _drawAll);
+    store.subscribe("newPost", _drawNewPost)
   }
   makePost(event) {
     event.preventDefault()
@@ -43,15 +50,22 @@ export default class PostsController {
 
   makeComment(event, id) {
     event.preventDefault()
-    let found = store.State.posts.find(post => post.id == id)
+    let found = store.State.posts.find(post => post._id == id)
     let commentData = event.target.comment.value
+    // let commentData = {
+    //   user: formdata.user.value,
+    //   content: formdata.content.value,
+    //   topic: formdata.topic.value,
+    //   imgUrl: formdata.imgUrl.value,
+    //   voteCount: 0,
+    // }
     PostsService.makeComment(commentData, found)
     event.target.reset()
 
   }
 
-  drawsModal(id) {
-    _drawModal(id)
+  drawsModal(postId) {
+    _drawModal(postId)
   }
 
 }

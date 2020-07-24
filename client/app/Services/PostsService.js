@@ -34,7 +34,8 @@ class PostsService {
     console.log(found.comments)
   }
   addToPosts() {
-    store.State.posts.unshift(new Post(store.State.newPost[0]))
+    debugger
+    store.State.posts.unshift(new Post(store.State.newPost))
   }
 
 
