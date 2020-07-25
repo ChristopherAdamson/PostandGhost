@@ -4,8 +4,10 @@ let _state = {
   /** @type {Posts[]} */
   posts: [],
   /** @type {Posts[]} */
-  newPost: []
-
+  newPost: [],
+  activePost: [],
+  /** @type {Comment[]} */
+  newComment: []
 };
 
 /** Collection of listeners to be called based on keyed state changes
@@ -13,7 +15,9 @@ let _state = {
  */
 let _listeners = {
   posts: [],
-  newPost: []
+  newPost: [],
+  activePost: [],
+  newComment: []
 };
 
 //NOTE You should not need to change the code from this point down
@@ -25,7 +29,7 @@ let _listeners = {
 function _validateProp(prop) {
   if (!_state.hasOwnProperty(prop) || !Array.isArray(_listeners[prop])) {
     throw new Error(
-      `Unkown property ${prop}, please review your state and listeners`
+      `Unknown property ${prop}, please review your state and listeners`
     );
   }
 }

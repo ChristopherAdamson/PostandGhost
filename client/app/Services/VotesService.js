@@ -11,17 +11,17 @@ const _api = axios.create({
 class VotesService {
   postVote(choice, id) {
     if (choice == "up") {
-      let foundPost = store.State.posts.find(post => post.id = id)
+      let foundPost = store.State.posts.find(post => post._id = id)
       foundPost.voteCount++
     } else {
-      let foundPost = store.State.posts.find(post => post.id = id)
+      let foundPost = store.State.posts.find(post => post._id = id)
       foundPost.voteCount--
     }
   }
 
-  commentVote(choice, id){
- 
-}
+  commentVote(choice, id) {
+
+  }
 
 }
 

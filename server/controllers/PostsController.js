@@ -16,6 +16,7 @@ export class PostsController extends BaseController {
     .delete("/:id/comments/:commentId", this.deleteComment)
     .get("/page/:page", this.findByPage)
     .get("/choice/:choice/:page", this.findByChoice)
+
   }
   
   async delete(req, res, next) {

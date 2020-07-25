@@ -29,12 +29,17 @@ class PostsService {
     })
   }
 
-  makeComment(commentData, found) {
-    found.comments.push(commentData)
-    console.log(found.comments)
+  makeComment(commentData, id) {
+    _api.post(id + "/comments", commentData).then(res => {
+      console.log(res);
+      let newComment = store.State.posts.find(p => p._id == id)
+      newComment.comments.unshift(commentData)
+      store.commit("newComment", new Comment(commentData))
+    }).catch(err => console.error(err))
   }
   addToPosts() {
-    store.State.posts.unshift(new Post(store.State.newPost[0]))
+    debugger
+    store.State.posts.unshift(new Post(store.State.newPost))
   }
 
 
