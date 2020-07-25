@@ -78,6 +78,9 @@ export default class Post {
     
       </form>
     </div>
+
+    <div id="newComment"></div>
+    <div id="oldComments"></div>
      `
 
 

@@ -8,7 +8,7 @@ export default class Comment {
     this.user = data.user || "No User"
   }
 
-  get commentTemplate() {
+  get Template() {
     let template = /*html*/`
       
       <div class="card border-dark rounded">
