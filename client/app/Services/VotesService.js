@@ -13,9 +13,14 @@ class VotesService {
     if (choice == "up") {
       let foundPost = store.State.posts.find(post => post._id = id)
       foundPost.voteCount++
+
+      store.commit("recentVote", foundPost.voteCount)
+
+
     } else {
       let foundPost = store.State.posts.find(post => post._id = id)
       foundPost.voteCount--
+      store.commit("recentVote", foundPost.voteCount)
     }
   }
 

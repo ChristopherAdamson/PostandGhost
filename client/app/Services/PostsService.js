@@ -1,4 +1,4 @@
-import store from "../store.js";
+import store from "../store.js"
 import Post from "../Models/Post.js"
 
 // @ts-ignore
@@ -8,6 +8,7 @@ const _api = axios.create({
 })
 
 class PostsService {
+
 
   constructor() {
     store.subscribe("newPost", this.addToPosts)
@@ -22,8 +23,11 @@ class PostsService {
   }
 
   search(data) {
-    let foundpost = store.State.posts.forEach(post => post.topic.includes(data))
-    console.log(foundpost)
+    let foundPost = store.State.posts.filter(post => post.topic.includes(data) || post.content.includes(data))
+
+    console.log(foundPost)
+    debugger
+    store.commit("searchPost", foundPost)
   }
 
   getPosts() {
@@ -46,7 +50,11 @@ class PostsService {
     debugger
     store.State.posts.unshift(new Post(store.State.newPost))
   }
-
+  filter(choice) {
+    _api.get("choice/" + choice + "/0").then(res => {
+      store.commit("posts", res.data.data.map(post => new Post(post)))
+    }).catch(err => console.error(err))
+  }
 
 }
 
