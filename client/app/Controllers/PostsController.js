@@ -2,11 +2,19 @@ import PostsService from "../Services/PostsService.js";
 import store from "../store.js";
 import Comment from "../Models/Comment.js"
 
+
 //Private
 function _drawAll() {
   let template = ""
   let posts = store.State.posts;
   console.log(posts);
+  posts.forEach(post => template += post.Template)
+  document.getElementById("posts").innerHTML = template;
+}
+function _drawSearch() {
+  let template = ""
+  let posts = store.State.searchPost
+  debugger
   posts.forEach(post => template += post.Template)
   document.getElementById("posts").innerHTML = template;
 }
@@ -55,6 +63,7 @@ export default class PostsController {
     store.subscribe("posts", _drawAll);
     store.subscribe("newPost", _drawNewPost);
     store.subscribe("newComment", _drawComment)
+    store.subscribe("searchPost", _drawSearch)
   }
   makePost(event) {
     event.preventDefault()
@@ -85,9 +94,18 @@ export default class PostsController {
     event.target.reset()
 
   }
-
+  filter(choice) {
+    PostsService.filter(choice)
+  }
   drawsModal(postId) {
     _drawModal(postId)
   }
 
+  search(event) {
+    event.preventDefault()
+    let formdata = event.target.type.value
+    PostsService.search(formdata)
+  }
+
 }
+
