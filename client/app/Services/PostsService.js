@@ -30,10 +30,9 @@ class PostsService {
   }
 
   makeComment(commentData, id) {
+    debugger
     _api.post(id + "/comments", commentData).then(res => {
       console.log(res);
-      let newComment = store.State.posts.find(p => p._id == id)
-      newComment.comments.unshift(commentData)
       store.commit("newComment", new Comment(commentData))
     }).catch(err => console.error(err))
   }

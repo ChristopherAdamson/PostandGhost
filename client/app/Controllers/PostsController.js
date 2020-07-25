@@ -1,5 +1,6 @@
 import PostsService from "../Services/PostsService.js";
 import store from "../store.js";
+import Comment from "../Models/Comment.js"
 
 //Private
 function _drawAll() {
@@ -18,19 +19,36 @@ function _drawNewPost() {
   document.getElementById("newPost").innerHTML += template;
 }
 
+async function _drawModal(postId) {
+  debugger
+  await _drawModalSub(postId)
+  _drawOldComments(postId)
+}
 
-function _drawModal(postId) {
+function _drawModalSub(postId) {
   let template = ""
   let postData = store.State.posts.find(p => p._id == postId)
   console.log(postData);
   document.getElementById("modalTemplate").innerHTML = postData.modalTemplate
   template += `</div></div>`
-}
-
-function _drawComment() {
-  document.getElementById("newComment").innerHTML = store.State.newComment.commentTemplate
 
 }
+
+function _drawComment(commentData, postId) {
+
+  document.getElementById("newComment").innerHTML = new Comment(commentData).Template
+
+}
+
+function _drawOldComments(postId) {
+  let template = ""
+  let post = store.State.posts.find(p => p._id == postId)
+  console.log(post);
+
+  post.comments.forEach(c => template += new Comment(c).Template)
+  document.getElementById("oldComments").innerHTML = template;
+}
+
 //Public
 export default class PostsController {
   constructor() {
@@ -63,6 +81,7 @@ export default class PostsController {
     }
 
     PostsService.makeComment(commentData, id)
+    _drawComment(commentData, id)
     event.target.reset()
 
   }
