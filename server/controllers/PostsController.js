@@ -1,24 +1,24 @@
 import express from "express";
 import BaseController from "../utils/BaseController";
 import { postsService } from "../services/PostsService";
+import { dbContext } from "../db/DbContext";
 
 let endpoint = "post"
 export class PostsController extends BaseController {
   constructor() {
     super("api/posts");
     this.router
-    .get("", this.getAll)
-    .get("/:id", this.getById)
-    .post("", this.create)
-    .post("/:id/comments", this.addComment)
-    .put("/:id", this.edit)
-    .delete("/:id", this.delete)
-    .delete("/:id/comments/:commentId", this.deleteComment)
-    .get("/page/:page", this.findByPage)
-    .get("/choice/:choice/:page", this.findByChoice)
-
+      .get("", this.getAll)
+      .get("/:id", this.getById)
+      .post("", this.create)
+      .post("/:id/comments", this.addComment)
+      .put("/:id", this.edit)
+      .delete("/:id", this.delete)
+      .delete("/:id/comments/:commentId", this.deleteComment)
+      .get("/page/:page", this.findByPage)
+      .get("/choice/:choice/:page", this.findByChoice)
   }
-  
+
   async delete(req, res, next) {
     try {
       await postsService.delete(req.params.id)
@@ -27,8 +27,8 @@ export class PostsController extends BaseController {
       next(err)
     }
   }
-  
-  
+
+
   async edit(req, res, next) {
     try {
       let rawPostData = req.body
@@ -38,8 +38,15 @@ export class PostsController extends BaseController {
       next(err)
     }
   }
- 
-  
+
+  async getById(req, res, next) {
+    try {
+      let found = await postsService.findById(req.params.id)
+      res.send({ data: found, message: "Got post by id " + endpoint + "s." })
+    } catch (error) {
+      next(error);
+    }
+  }
 
   async findByPage(req, res, next) {
     try {
@@ -50,6 +57,7 @@ export class PostsController extends BaseController {
       next(error)
     }
   }
+
   async findByChoice(req, res, next) {
     try {
       let pageNo = req.params.page
@@ -58,24 +66,15 @@ export class PostsController extends BaseController {
       res.send({ data: pageData, message: "next 10" + endpoint + "s" })
     } catch (error) {
       next(error)
-  
-    }
-  }
-  
-  async getAll(req, res, next) {
-    try {
-      let posts = await postsService.find()
-      res.send({ data: posts, message: "Got all " + endpoint + "s." })
-      return res.send();
-    } catch (error) {
-      next(error);
+
     }
   }
 
-  async getById(req, res, next) {
+  async getAll(req, res, next) {
     try {
-      let found = await postsService.findById(req.params.id)
-      res.send({ data: found, message: "Got post by id " + endpoint + "s." })
+      let posts = await postsService.find(req.query)
+      res.send({ data: posts, message: "Got all " + endpoint + "s." })
+      return res.send();
     } catch (error) {
       next(error);
     }
@@ -95,12 +94,10 @@ export class PostsController extends BaseController {
     try {
       let comment = await postsService.addComment(req.params.id, req.body);
       if (comment) {
-        console.log(comment)
         return res.send(comment);
       }
     } catch (error) {
       next(error);
-      console.log(error)
     }
   }
 
