@@ -27,11 +27,16 @@ function _drawModal(postId) {
   template += `</div></div>`
 }
 
+function _drawComment() {
+  document.getElementById("newComment").innerHTML = store.State.newComment.commentTemplate
+
+}
 //Public
 export default class PostsController {
   constructor() {
     store.subscribe("posts", _drawAll);
-    store.subscribe("newPost", _drawNewPost)
+    store.subscribe("newPost", _drawNewPost);
+    store.subscribe("newComment", _drawComment)
   }
   makePost(event) {
     event.preventDefault()
@@ -50,16 +55,14 @@ export default class PostsController {
 
   makeComment(event, id) {
     event.preventDefault()
-    let found = store.State.posts.find(post => post._id == id)
-    let commentData = event.target.comment.value
-    // let commentData = {
-    //   user: formdata.user.value,
-    //   content: formdata.content.value,
-    //   topic: formdata.topic.value,
-    //   imgUrl: formdata.imgUrl.value,
-    //   voteCount: 0,
-    // }
-    PostsService.makeComment(commentData, found)
+    console.log(event)
+    let commentData = {
+      content: event.target.comment.value,
+      user: event.target.user.value,
+      voteCount: 0
+    }
+
+    PostsService.makeComment(commentData, id)
     event.target.reset()
 
   }

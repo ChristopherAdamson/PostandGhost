@@ -80,14 +80,10 @@ export default class Post {
     </div>
      `
 
-    this.comments.forEach(comment => template += /*html*/`
-      
-      <div class="card border-dark rounded">
-      <div class="row justify-content-center">
-      ${comment.content}
-      </div></div>
-     `)
+
 
     return template
   }
+
+
 }
