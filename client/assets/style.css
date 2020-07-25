@@ -11,8 +11,8 @@
   --bronze: #CB793A;
 }
 body{
-  background-color: var(--white);
-  color: var(--black);
+  background-color: var(--lightgrey);
+  color: var(--mint);
 }
 
 header{
@@ -20,9 +20,20 @@ header{
   color: var(--white);
 }
 
+.img-special-grant{
+  background-size: cover;
+  height: 30%;
+}
+
 .font-darkpurple{
 color: var(--darkpurple);
 }
+
+.bg-purp{
+    background-color: var(--darkpurple);
+  
+}
+
 
 .font-bronze{
 color: var(--bronze);
@@ -34,6 +45,10 @@ color: var(--white);
 
 .font-mint{
   color: var(--mint);
+  }
+
+  .bg-mint{
+    background-color: var(--mint)
   }
 
   .font-purple{
