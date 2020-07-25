@@ -23,7 +23,7 @@
 
   <header>
     <h1>POST & GHOST</h1>
-    <form onsubmit="app.postsController.Search(event)">
+    <form onsubmit="app.postsController.search(event)">
       <div class="form-group rm-my">
         <div class="d-flex py-3 px-3 justify-content-around align-content-end">
           <div class="align-items-center flex-grow-1">
@@ -41,48 +41,48 @@
   <main class="container-fluid">
 
 
-<div class="row">
+    <div class="row">
 
-    <!-- SECTION Main Post Draw -->
-    <section class="col-9">
-      <div class="container-fluid" id="newPost"></div>
-      <div class="container-fluid" id="posts"></div>
+      <!-- SECTION Main Post Draw -->
+      <section class="col-9">
+        <div class="container-fluid" id="newPost"></div>
+        <div class="container-fluid" id="posts"></div>
 
-      <div class="modal fade" id="commentModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div id="modalTemplate" class="modal-body">
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <div class="modal fade" id="commentModal" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div id="modalTemplate" class="modal-body">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-    </section>
+      </section>
 
-    <!-- SECTION Sidebar -->
-    <section class="col-3">
+      <!-- SECTION Sidebar -->
+      <section class="col-3">
 
         <!-- Button trigger modal -->
         <div class="row">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-          Add New Post
-        </button>
-      </div>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            Add New Post
+          </button>
+        </div>
         <div class="row">
-        <button type="button" class="btn btn-primary" onclick="app.postsController.filter('date')">
-          Filter by Date
-        </button></div>
+          <button type="button" class="btn btn-primary" onclick="app.postsController.filter('date')">
+            Filter by Date
+          </button></div>
         <div class="row">
-        <button type="button" class="btn btn-primary" onclick="app.postsController.filter('vote')">
-          Filter by Vote
-        </button></div>
+          <button type="button" class="btn btn-primary" onclick="app.postsController.filter('vote')">
+            Filter by Vote
+          </button></div>
         <div class="row">
-        <button type="button" class="btn btn-primary" onclick="app.postsController.filter('comment')">
-          Filter by comment count
-        </button></div>
+          <button type="button" class="btn btn-primary" onclick="app.postsController.filter('comment')">
+            Filter by comment count
+          </button></div>
 
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -129,11 +129,11 @@
 
 
 
-    </section>
+      </section>
 
 
 
-  </div>
+    </div>
   </main>
 
 
