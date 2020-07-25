@@ -23,7 +23,7 @@
 
   <header>
     <h1>POST & GHOST</h1>
-    <form onsubmit="app.postsController.search(event)">
+    <form onsubmit="app.postsController.Search(event)">
       <div class="form-group rm-my">
         <div class="d-flex py-3 px-3 justify-content-around align-content-end">
           <div class="align-items-center flex-grow-1">
@@ -41,7 +41,7 @@
   <main class="container-fluid">
 
 
-
+<div class="row">
 
     <!-- SECTION Main Post Draw -->
     <section class="col-9">
@@ -64,12 +64,25 @@
 
     <!-- SECTION Sidebar -->
     <section class="col-3">
-      <div class="row">
 
         <!-- Button trigger modal -->
+        <div class="row">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
           Add New Post
         </button>
+      </div>
+        <div class="row">
+        <button type="button" class="btn btn-primary" onclick="app.postsController.filter('date')">
+          Filter by Date
+        </button></div>
+        <div class="row">
+        <button type="button" class="btn btn-primary" onclick="app.postsController.filter('vote')">
+          Filter by Vote
+        </button></div>
+        <div class="row">
+        <button type="button" class="btn btn-primary" onclick="app.postsController.filter('comment')">
+          Filter by comment count
+        </button></div>
 
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -114,13 +127,13 @@
           </div>
         </div>
 
-      </div>
+
 
     </section>
 
 
 
-
+  </div>
   </main>
 
 

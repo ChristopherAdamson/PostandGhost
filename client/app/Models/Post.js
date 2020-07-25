@@ -14,31 +14,56 @@ export default class Post {
   get Template() {
 
     let template = /*html*/`
-        <div class="row bg-secondary m-5">
+        <div class="row bg-purp m-3 justify-content-center p-4 rounded shadow">
+        <div class="col-12">
+        <div class="text-right">       
+        <div class="text-right">User: ${this.user}</div>
+        </div>
+        </div>
+        <div class="col-3 d-flex"> 
+        <img class="rounded img-special-grant my-auto" src="${this.imgUrl}" alt="">
+        </div> 
 
-      <div class="col-9">
+      <div class="col-7">
 
-        <div class="text-right">${this.user}</div>
+    
 
-        <div class="text-center" data-toggle="modal" data-target="#commentModal" onclick="app.postsController.drawsModal('${this._id}')"> ${this.topic} </div>
+      <div class="align-content-center d-flex">
+      <h1  data-toggle="modal" data-target="#commentModal" onclick="app.postsController.drawsModal('${this._id}')"> ${this.topic} </h1>
+      </div>
+        
 
-        <img class="center-block" src="${this.imgUrl}" alt="">
-
-        <div class="text-center" data-toggle="modal" data-target="#commentModal" onclick="app.postsController.drawsModal('${this._id}')">${this.comments.length} comments</div>
 
       </div>
 
-      <div class="col-3">
+     
+      <div class="col-2 align-items-around">
 
-        <button onclick="app.votesController.postVote('up', '${this._id}')">Up Arrow</button>
 
-        <p>${this.voteCount}</p>
 
-        <button onclick="app.votesController.postVote('down', '${this._id}')">Down Arrow</button>
+        <div class="row justify-content-center">
+        <i class="fas fa-ghost fa-3x" onclick="app.votesController.postVote('up', '${this._id}')"></i>
+        </div>
+        <div class="row justify-content-center">
+        <div class="" id="${this._id}-vote">${this.voteCount}</div>
+        </div>
+        <div class="row justify-content-center">
+        <i class="fas fa-ghost fa-rotate-180  fa-3x" onclick="app.votesController.postVote('down', '${this._id}')"></i>
+        </div>
+
+        
+
+      </div>
+
+
+      <div class="col-12">
+      <h5 class="text-center" data-toggle="modal" data-target="#commentModal" onclick="app.postsController.drawsModal('${this._id}')">${this.comments.length} comments</h5>
 
       </div>
 
       </div>
+
+
         `
     return template
   }
