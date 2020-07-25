@@ -20,6 +20,12 @@ class PostsService {
       store.commit("newPost", post)
     }).catch(err => console.error(err))
   }
+
+  search(data) {
+    let foundpost = store.State.posts.forEach(post => post.topic.includes(data))
+    console.log(foundpost)
+  }
+
   getPosts() {
     _api.get("").then(res => {
       console.log(res);
