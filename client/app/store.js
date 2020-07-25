@@ -5,7 +5,9 @@ let _state = {
   posts: [],
   /** @type {Posts[]} */
   newPost: [],
-  activePost: []
+  activePost: [],
+  /** @type {Comment[]} */
+  newComment: []
 };
 
 /** Collection of listeners to be called based on keyed state changes
@@ -14,7 +16,8 @@ let _state = {
 let _listeners = {
   posts: [],
   newPost: [],
-  activePost: []
+  activePost: [],
+  newComment: []
 };
 
 //NOTE You should not need to change the code from this point down

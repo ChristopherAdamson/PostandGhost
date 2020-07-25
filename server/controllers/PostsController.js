@@ -9,10 +9,10 @@ export class PostsController extends BaseController {
     this.router
       .get("", this.getAll)
       .post("", this.create)
-      .post("/:id/comment", this.addComment)
+      .post("/:id/comments", this.addComment)
       .put("/:id", this.edit)
       .delete("/:id", this.delete)
-      .delete("/:id/comment/:commentId", this.deleteComment)
+      .delete("/:id/comments/:commentId", this.deleteComment)
       .get("/:page", this.findByPage)
   }
 
