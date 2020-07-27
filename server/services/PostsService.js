@@ -3,7 +3,7 @@ import { BadRequest } from "../utils/Errors";
 
 
 class PostsService {
-  
+
   async create(body) {
     return await dbContext.Posts.create(body)
   }
@@ -11,24 +11,24 @@ class PostsService {
     let posts = await dbContext.Posts.find(query);
     return posts;
   }
-  
+
   async findByPage(page) {
-    let foundPage = await dbContext.Posts.find({}).sort({createdAt: 'asc'} ).limit(10).skip(page * 10);
+    let foundPage = await dbContext.Posts.find({}).sort({ createdAt: 'asc' }).limit(10).skip(page * 10);
     return foundPage;
   }
   async findByChoice(choice, page) {
-    if(choice == 'date') {
-    let foundChoice = await dbContext.Posts.find().sort({createdAt: 'desc'} ).limit(10).skip(page * 10);
-    return foundChoice; 
-    } else if(choice == 'votes'){
-      let foundChoice = await dbContext.Posts.find().sort({voteCount: 'desc'} ).limit(10).skip(page * 10);
-      return foundChoice; 
-    } else if (choice == 'comments'){
-      let foundChoice = await dbContext.Posts.find().sort({commentCount: 'desc'}).limit(10).skip(page * 10);
-    return foundChoice; 
+    if (choice == 'date') {
+      let foundChoice = await dbContext.Posts.find().sort({ createdAt: 'desc' }).limit(10).skip(page * 10);
+      return foundChoice;
+    } else if (choice == 'votes') {
+      let foundChoice = await dbContext.Posts.find().sort({ voteCount: -1 }).limit(10).skip(page * 10);
+      return foundChoice;
+    } else if (choice == 'comments') {
+      let foundChoice = await dbContext.Posts.find().sort({ commentCount: 'desc' }).limit(10).skip(page * 10);
+      return foundChoice;
     }
-    
-   }
+
+  }
 
   async edit(id, newData) {
     return await dbContext.Posts.findByIdAndUpdate(id, newData, { new: true })
